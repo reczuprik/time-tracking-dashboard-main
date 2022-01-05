@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Time tracking dashboard</title>
+  
+  <script src="index.js" defer></script>
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card card--hero">
+      <div class="card-main card-main--hero">
+        <img src="/images/image-jeremy.png" class="card-main--hero-picture" alt="Jeremy Robson">
+        <h2 class="card-main--hero-content">Report for<span class="card-main--hero-user">Jeremy Robson</span></h2>
+      </div>
+      <div class="card-footer">
+        <button class="card-footer-button card-footer-button--active" data-duration="daily" id="daily">Daily</button>
+        <button class="card-footer-button" data-duration="weekly">Weekly</button>
+        <button class="card-footer-button"data-duration="monthly">Monthly</button>
+      </div>
+    </div>
+    
+
+    <div class="card card--work">
+      <div class="card-main">
+        <h2 class="card-main-title">Work</h2>
+        <img src="/images/icon-ellipsis.svg" class="card-main-dots">
+        <p class="card-main-hours" >5hrs</p>
+        <p class="card-main-previous_hours"> Previous - 7hrs <!-- daily --></p>
+      </div>      
+    </div>
+    <div class="card card--play">
+      <div class="card-main">
+        <h2 class="card-main-title">Play</h2>
+        <img src="/images/icon-ellipsis.svg" class="card-main-dots">
+        <p class="card-main-hours">1hrs</p>
+        <p class="card-main-previous_hours"> Previous - 2hrs <!-- daily --></p>
+      </div>
+    </div>
+
+    <div class="card card--study">
+      <div class="card-main">
+        <h2 class="card-main-title">Study</h2>
+        <img src="/images/icon-ellipsis.svg" class="card-main-dots">
+        <p class="card-main-hours">0hrs</p>
+        <p class="card-main-previous_hours"> Previous - 1hrs <!-- daily --></p>
+      </div>
+    </div>
+
+    <div class="card card--exercise">
+      <div class="card-main">
+        <h2 class="card-main-title">Exercise</h2>
+        <img src="/images/icon-ellipsis.svg" class="card-main-dots">
+        <p class="card-main-hours">1hrs</p>
+        <p class="card-main-previous_hours"> Previous - 1hrs <!-- daily --></p>
+      </div>
+    </div>
+
+    <div class="card card--social">
+      <div class="card-main">
+        <h2 class="card-main-title">Social</h2>
+        <img src="/images/icon-ellipsis.svg" class="card-main-dots">
+        <p class="card-main-hours">1hrs</p>
+        <p class="card-main-previous_hours"> Previous - 3hrs <!-- daily --></p>
+      </div>
+    </div>
+
+    <div class="card card--selfcare">
+      <div class="card-main">
+        <h2 class="card-main-title">Self Care</h2>
+        <img src="/images/icon-ellipsis.svg" class="card-main-dots">
+        <p class="card-main-hours">0hrs</p>
+        <p class="card-main-previous_hours"> Previous - 1hrs <!-- daily --></p>
+      </div>
+    </div>
+
+  </div>
+  
+  <footer class="attribution footer">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Gczuprik</a>.
+  </footer>
+</body>
+</html>
+
+
+

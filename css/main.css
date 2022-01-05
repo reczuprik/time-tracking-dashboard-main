@@ -1,0 +1,351 @@
+/* ------------------- */
+/* Reset               */
+/* ------------------- */
+/* https://piccalil.li/blog/a-modern-css-reset/ */
+/* Box sizing */
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-weight: 400;
+}
+
+/* set up the body */
+body {
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* make images easier to work with */
+img,
+pcture {
+  max-width: 100%;
+  display: block;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    -webkit-animation-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    -webkit-transition-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  font-family: "Rubik";
+  background: #0f1424;
+  color: white;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+h1, h2, p {
+  font-size: 0.8rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+@media (min-width: 800px) {
+  body {
+    margin: 0% auto;
+    overflow: hidden;
+    margin-top: 10%;
+  }
+}
+
+.container {
+  display: -ms-grid;
+  display: grid;
+  margin-top: 2rem;
+  margin-inline: auto;
+  padding-inline: 2rem;
+  max-width: 75rem;
+  gap: 2em;
+}
+
+@media (min-width: 800px) {
+  .container {
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.card {
+  background-repeat: no-repeat;
+  background-position: 90% -5px;
+  border-radius: 15px;
+  padding-top: 2em;
+}
+
+.card--work {
+  background-color: #ff8c66;
+  background-image: url(../images/icon-work.svg);
+}
+
+.card--play {
+  background-color: #56c2e6;
+  background-image: url(../images/icon-play.svg);
+}
+
+.card--social {
+  background-color: #7536d3;
+  background-image: url(../images/icon-social.svg);
+}
+
+.card--study {
+  background-color: #ff5c7c;
+  background-image: url(../images/icon-study.svg);
+}
+
+.card--exercise {
+  background-color: #4acf81;
+  background-image: url(../images/icon-exercise.svg);
+}
+
+.card--selfcare {
+  background-color: #f1c65b;
+  background-image: url(../images/icon-self-care.svg);
+}
+
+.card--hero {
+  background-color: #1c1f4a;
+  padding-top: 0;
+}
+
+@media (min-width: 800px) {
+  .card--hero {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    grid-row: 1 / span 2;
+  }
+}
+
+.card-main {
+  background: #1c1f4a;
+  position: relative;
+  z-index: 1;
+  border-radius: 15px;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1.5em 1em;
+      grid-template-areas: "type dots" "hours prevhours";
+  -webkit-transition: opacity 100ms ease-in;
+  transition: opacity 100ms ease-in;
+}
+
+@media (min-width: 800px) {
+  .card-main {
+    gap: 1em;
+        grid-template-areas: "type dots" "hours hours" "prevhours prevhours";
+  }
+}
+
+.card-main-title {
+  font-size: 1.5rem;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: type;
+}
+
+.card-main-hours {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: hours;
+  font-size: 2rem;
+  --bdr:var(--bordercolor);
+  --trnsfrm:var(--trnsfrm);
+}
+
+.card-main-hours::after {
+  content: '';
+  margin: 0 0 2px 5px;
+  width: 0.8rem;
+  height: 0.8rem;
+  border: solid;
+  border-color: var(--bdr);
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  -webkit-transform: rotate(var(--trnsfrm));
+          transform: rotate(var(--trnsfrm));
+}
+
+.card-main-previous_hours {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: prevhours;
+  justify-self: flex-end;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+@media (min-width: 800px) {
+  .card-main-previous_hours {
+    justify-self: flex-start;
+  }
+}
+
+.card-main-dots {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: dots;
+  justify-self: flex-end;
+  opacity: .6;
+}
+
+.card-main-dots:hover, .card-main-dots:focus {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.card-main:hover, .card-main:focus {
+  background: #292f70;
+}
+
+.card-main--hero {
+  gap: 1em;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-grid-columns: 1fr 2fr;
+      grid-template-columns: 1fr 2fr;
+  background: #5847eb;
+}
+
+@media (min-width: 800px) {
+  .card-main--hero {
+    -ms-grid-rows: (1fr)[2];
+        grid-template-rows: repeat(2, 1fr);
+    -ms-grid-columns: auto;
+        grid-template-columns: auto;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    padding-bottom: 4rem;
+    gap: .1em;
+        grid-template-areas: "pic" "content";
+  }
+}
+
+.card-main--hero-picture {
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid white;
+}
+
+.card-main--hero-content {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.8rem;
+}
+
+.card-main--hero-user {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.125rem;
+  display: block;
+}
+
+@media (min-width: 800px) {
+  .card-main--hero-user {
+    font-size: 2rem;
+  }
+}
+
+.card-footer {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  border-radius: 1rem;
+  padding: 1.75em 1em .75em;
+  background: #1c1f4a;
+}
+
+@media (min-width: 800px) {
+  .card-footer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
+.card-footer-button {
+  background: none;
+  color: rgba(255, 255, 255, 0.4);
+  border: none;
+  padding: 0em;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.card-footer-button:hover, .card-footer-button:focus, .card-footer-button--active {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.hidden {
+  display: none;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+/*# sourceMappingURL=main.css.map */

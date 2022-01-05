@@ -1,0 +1,270 @@
+@import 'reset';
+$colors:(
+    primary:hsl(246, 80%, 60%),
+    primary-light-red-work:hsl(15, 100%, 70%),
+    primary-soft-blue:hsl(195, 74%, 62%),
+    primary-light-red-study:hsl(348, 100%, 68%),
+    primary-lime-green-exercise:hsl(145, 58%, 55%),
+    primary-violet-social:hsl(264, 64%, 52%),
+    primary-soft-orange-selfcare:hsl(43, 84%, 65%),
+    neutral-very-dark-blue:hsl(226, 43%, 10%),
+    neutral-dark-blue:hsl(235, 46%, 20%),
+    neutral-desaturated:hsl(235, 45%, 61%),
+    neutral-pale-blue:hsl(236, 100%, 87%),
+    white-transparent:hsla(0, 100%, 100%, .8),
+    white-more-transparent:hsla(0, 100%, 100%, .4)
+);
+@function color($color-name){
+    @return map-get($colors, $color-name )
+};
+
+$font-sizes:(
+    huge:2rem,
+    big:1.5rem,
+    title:1.125rem,
+    paragraph:1rem,
+    small:0.8rem
+);
+@function fontsize($font-size){
+    @return map-get($font-sizes, $font-size )
+};
+
+
+$font-families:(
+    sans-normal: 'Rubik'
+);
+@function fontfamily($font-family){
+    @return map-get($font-families, $font-family )
+};
+
+$font-weights:(
+    fs300: 300,
+    fs400: 400,
+    fs500: 500
+);
+@function fontweight($font-weight){
+    @return map-get($font-weights, $font-weight )
+};
+
+$desktop:800px;
+
+@mixin desktop{
+    @media (min-width:#{$desktop}) {
+        @content;
+    }
+}
+html{
+    font-family: fontfamily(sans-normal);
+    background: color(neutral-very-dark-blue);
+    color: white;
+}
+
+h1{
+    font-size: fontsize(huge);
+    font-weight: fontweight(fs500);
+}
+h1,h2,p{
+    font-size: fontsize(small);
+    user-select: none;
+}
+body{
+    @include desktop{
+       margin: 0% auto;
+        overflow: hidden;
+        margin-top: 10%;
+        ;
+    }   
+}
+
+.container{
+    display: grid;
+    margin-top: 2rem;
+    margin-inline: auto;
+    padding-inline: 2rem;
+    max-width: 75rem;
+    gap:2em;
+    @include desktop{
+        grid-template-columns: repeat(4, 1fr );        
+    }   
+}
+
+.card{
+    background-repeat: no-repeat;
+    background-position: 90% -5px;
+    border-radius: 15px;
+    padding-top: 2em;
+    
+    &--work{
+        background-color: color(primary-light-red-work);
+        background-image: url(../images/icon-work.svg);
+        
+    }
+    &--play{
+        background-color: color(primary-soft-blue);
+        background-image: url(../images/icon-play.svg);
+    }
+    &--social{
+        background-color: color(primary-violet-social);
+        background-image: url(../images/icon-social.svg);
+    }
+    &--study{
+        background-color: color(primary-light-red-study);
+        background-image: url(../images/icon-study.svg);
+    }
+    &--exercise{
+        background-color: color(primary-lime-green-exercise);
+        background-image: url(../images/icon-exercise.svg);
+    }
+    &--selfcare{
+        background-color: color(primary-soft-orange-selfcare);
+        background-image: url(../images/icon-self-care.svg);            
+    }
+    &--hero{
+        background-color: #1c1f4a;
+        padding-top: 0;
+        @include desktop{   
+            grid-row: 1 / span 2;            
+        }   
+    }
+
+    &-main{
+        background: color(neutral-dark-blue);
+        position: relative;
+        z-index: 1;
+        border-radius: 15px;
+        display: grid;
+        align-items: center;
+        padding:1.5em 1em;
+        grid-template-areas: "type dots" "hours prevhours";
+        @include desktop{   
+            gap:1em;
+            grid-template-areas: "type dots" "hours hours" "prevhours prevhours";
+        }   
+
+
+        transition: opacity 100ms ease-in;
+
+        &-title{
+            font-size: fontsize(big);
+            grid-area: type;
+        }
+        &-hours{
+            grid-area: hours;
+            font-size: fontsize(huge);
+            --bdr:var(--bordercolor);
+            --trnsfrm:var(--trnsfrm);
+            &::after{//arrow
+                content: '';
+                margin: 0 0 2px 5px;
+                width: fontsize(small);
+                height: fontsize(small);
+                border: solid;
+                border-color:var(--bdr);
+                border-width: 0 3px 3px 0;
+                display: inline-block;
+                padding: 3px;
+                transform: rotate(var(--trnsfrm));
+            }
+        }
+        &-previous_hours{
+            grid-area: prevhours;
+            justify-self: flex-end;
+            color: color(white-more-transparent);
+            @include desktop{   
+                justify-self: flex-start
+            }   
+        }
+        &-dots{
+            grid-area: dots;
+            justify-self: flex-end;
+            opacity: .6;
+            &:hover,&:focus{
+                opacity:1;
+                cursor: pointer;
+            }
+        }
+        &:hover,&:focus{
+            background: lighten(color(neutral-dark-blue), 10%)
+            
+        }
+
+    }
+    &-main--hero{
+
+        gap:1em;
+        align-items: center;
+        grid-template-columns: 1fr 2fr;
+        background: color(primary);
+
+
+        @include desktop{   
+            grid-template-rows: repeat(2,1fr) ;
+            grid-template-columns: auto;
+            align-items: flex-start;
+            padding-bottom: 4rem;
+            gap: .1em;
+            grid-template-areas: "pic" "content";
+        }   
+
+        
+        &-picture{
+            height: max(80px);
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+        &-content{
+                
+            color:color(white-more-transparent);
+            font-size: fontsize(small);
+        }
+        &-user{
+            color:color(white-transparent);
+            font-size: fontsize(title);
+            font-weight: fontweight(500);
+            display: block;
+            @include desktop{   
+                font-size: 2rem;;
+            }
+        }
+    }
+    &-footer{
+        position: relative;
+        display: flex;
+        justify-content: space-around;
+        @include desktop{   
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between
+
+        }   
+        
+        
+        border-radius: 1rem;
+        padding: 1.75em 1em .75em;
+        background:color(neutral-dark-blue);
+        &-button{
+            background: none;
+            color: color(white-more-transparent);
+            border: none;
+            padding: 0em;
+            font: inherit;
+            cursor: pointer;
+            outline: inherit;
+            &:hover,&:focus,&--active{
+             
+                color: color(white-transparent);
+            }
+        }
+    }
+}
+.hidden{
+    display: none;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
